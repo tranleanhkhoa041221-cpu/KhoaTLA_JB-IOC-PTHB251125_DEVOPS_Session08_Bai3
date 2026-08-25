@@ -1,5 +1,5 @@
 # Stage 1: Build application với Gradle
-FROM gradle:8.5-jdk17-alpine AS builder
+FROM gradle:8.14-jdk17-alpine AS builder
 WORKDIR /app
 COPY build.gradle settings.gradle ./
 COPY src ./src
