@@ -1,0 +1,11 @@
+services:
+  github-runner:
+    image: myoung34/github-runner:latest
+    container_name: dood-runner
+    restart: always
+    environment:
+      - REPO_URL=https://github.com/tranleanhkhoa041221-cpu/KhoaTLA_JB-IOC-PTHB251125_DEVOPS_Session08_Bai1
+      - RUNNER_TOKEN=B2MUYM7OLJYMOPF2VF7WVDTKRXI2M
+      - RUNNER_NAME=dood-runner-khoa
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

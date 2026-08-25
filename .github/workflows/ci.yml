@@ -1,0 +1,73 @@
+#name: Payment Service CI
+#
+#on:
+#  push:
+#    branches: ["main", "master"]
+#  pull_request:
+#    branches: ["main", "master"]
+#
+#jobs:
+#  test:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#
+#      - name: Set up JDK 21
+#        uses: actions/setup-java@v5
+#        with:
+#          java-version: '21'
+#          distribution: 'temurin'
+#          cache: 'gradle'
+#
+#      - name: Grant execute permission for Gradlew
+#        run: chmod +x gradlew
+#
+#      - name: Run Unit Tests
+#        run: ./gradlew clean test
+#
+#  build:
+#    runs-on: ubuntu-latest
+#    needs: test
+#    steps:
+#      - name: Checkout code
+#        uses: actions/checkout@v4
+#
+#      - name: Set up JDK 21
+#        uses: actions/setup-java@v5
+#        with:
+#          java-version: '21'
+#          distribution: 'temurin'
+#          cache: 'gradle'
+#
+#      - name: Grant execute permission for Gradlew
+#        run: chmod +x gradlew
+#
+#      - name: Build JAR file
+#        run: ./gradlew bootJar
+#
+#      - name: Upload artifact
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: payment-service-jar
+#          path: build/libs/*.jar
+
+name: CI Test Docker Socket
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  test-docker:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check Docker Daemon (DooD)
+        run: |
+          docker info
+          docker ps
