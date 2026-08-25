@@ -1,0 +1,8 @@
+# 1. Đăng nhập GHCR
+echo MA_TOKEN_PAT | docker login ghcr.io -u tranleanhkhoa041221-cpu --password-stdin 
+
+# 2. Build image kèm tag phiên bản 1.0.0
+docker build -t ghcr.io/tranleanhkhoa041221-cpu/payment-service:1.0.0 .
+
+# 3. Push image lên GHCR
+docker push ghcr.io/tranleanhkhoa041221-cpu/payment-service:1.0.0
